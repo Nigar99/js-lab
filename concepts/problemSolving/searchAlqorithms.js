@@ -84,7 +84,60 @@ const linearSearchClosestElement = (arr, targ) => {
 // İki array arasında ortaq elementləri tap
 const linearSearchSameEl = (arr1, arr2) => {
   const newArr = new Set(arr1);
-  return arr2.filter(el=>newArr.has(el));
+  return arr2.filter((el) => newArr.has(el));
 };
 
-console.log(linearSearchSameEl([1, 2, 3, 10], [3, 10, 20]));
+// console.log(linearSearchSameEl([1, 2, 3, 10], [3, 10, 20]));
+
+// const linearSearchMatrix = (arr, targ) => {
+//   for (let i = 0; i < arr.length; i++) {
+//     const innerIndex = arr[i].findIndex(el=>el===targ);
+//     if (innerIndex>0) {
+//       return { row: i, column: innerIndex };
+//     }
+//   }
+// };
+
+const linearSearchMatrix = (arr, targ) => {
+  for (let i = 0; i < arr.length; i++) {
+    const row = arr[i];
+    for (let j = 0; j < row.length; j++) {
+      const column = row[j];
+      if (column === targ) return { row: i, column: j };
+    }
+  }
+};
+
+// console.log(
+//   linearSearchMatrix(
+//     [
+//       [1, 5, 7],
+//       [3, 5, 9],
+//       [2, 5, 5],
+//     ],
+//     9
+//   )
+// );
+
+const linearSearchRecursive = (el, targ) => {
+  const searchRecurcive = (el, result) => {
+    if (Array.isArray(el)) {
+      for (let i = 0; i < el.length; i++) {
+        const res = searchRecurcive(el[i], [...result, i]);
+        if (res) return res;
+      }
+    } else if (el === targ) {
+      return result;
+    } else {
+      return null;
+    }
+  };
+  return searchRecurcive(el, []);
+};
+
+console.log(
+  linearSearchRecursive(
+    [12, [1, [6, 89], 7], [3, [5, 9]], [[2, 5, [44, 6, [8, 3, 1]]], 44]],
+    91
+  )
+);
