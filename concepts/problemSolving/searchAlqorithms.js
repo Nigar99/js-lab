@@ -135,9 +135,9 @@ const linearSearchRecursive = (el, targ) => {
   return searchRecurcive(el, []);
 };
 
-console.log(
-  linearSearchRecursive(
-    [12, [1, [6, 89], 7], [3, [5, 9]], [[2, 5, [44, 6, [8, 3, 1]]], 44]],
-    91
-  )
-);
+// console.log(
+//   linearSearchRecursive(
+//     [12, [1, [6, 89], 7], [3, [5, 9]], [[2, 5, [44, 6, [8, 3, 1]]], 44]],
+//     91
+//   )
+// );
