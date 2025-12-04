@@ -169,5 +169,33 @@ const findLogResult9 = () => {
   });
   p.catch(console.log).then(console.log).catch(console.log);
 };
-console.log(findLogResult9());
+// console.log(findLogResult9());
+
+
+async function x() {
+  try {
+    throw "A";
+  } catch (e) {
+    throw "B";
+  } finally {
+    return "C";
+  }
+}
+
+// x().then(console.log).catch(console.log);
+
+const findLogResult10 = () => {
+  Promise.resolve(1)
+    .then(() => {
+      throw 2;
+    })
+    .catch((e) => e + 1)
+    .finally(() => {
+      return 10;
+    })
+    .then((r) => console.log("a:", r))
+    .catch((err) => console.log("b:", err));
+};
+
+
 
